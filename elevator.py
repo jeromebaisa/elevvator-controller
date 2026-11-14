@@ -68,3 +68,23 @@ while True:
             print("STOP")
             print("OPEN_DOOR")
             state = "AT_FLOOR3"
+
+# Floor 3 to Floor 2
+    elif state == "AT_FLOOR3":
+        if event == "CAR_FLOOR2":
+            print("CLOSE_DOOR")
+            print("MOVE_DOWN_FAST")
+            state = "MOVING_FLOOR3_TO_FLOOR2"
+
+# Slow down when approaching Floor 2
+    elif state == "MOVING_FLOOR3_TO_FLOOR2":
+        if event == "BETWEEN_2_3":
+            print("MOVE_DOWN_SLOW")
+            state = "SLOWING_FLOOR3_TO_FLOOR2"
+
+# Stop at Floor 2
+    elif state == "SLOWING_FLOOR3_TO_FLOOR2":
+        if event == "AT_FLOOR2":
+            print("STOP")
+            print("OPEN_DOOR")
+            state = "AT_FLOOR2"
