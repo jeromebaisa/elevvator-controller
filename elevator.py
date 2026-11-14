@@ -11,12 +11,12 @@ while True:
 
 # Floor 1 to Floor 3
     if state == "AT_FLOOR1":
-        if event == "CAR_FLOOR3":
+        if event == "CAR_FLOOR3" or event == "FLOOR3_DOWN":
             print("CLOSE_DOOR")
             print("MOVE_UP_FAST")
             state = "MOVING_UP_TO_FLOOR3"
 
-        elif event == "CAR_FLOOR2":
+        elif event == "CAR_FLOOR2" or event == "FLOOR2_UP" or event == "FLOOR2_DOWN":
             print("CLOSE_DOOR")
             print("MOVE_UP_FAST")
             state = "MOVING_UP_TO_FLOOR2"
@@ -49,13 +49,13 @@ while True:
     elif state == "AT_FLOOR2":
 
 # Floor 2 to Floor 3
-        if event == "CAR_FLOOR3":
+        if event == "CAR_FLOOR3" or event == "FLOOR3_DOWN":
             print("CLOSE_DOOR")
             print("MOVE_UP_FAST")
             state = "MOVING_FLOOR2_TO_FLOOR3"
 
 # Floor 2 to Floor 1
-        elif event == "CAR_FLOOR1":
+        elif event == "CAR_FLOOR1" or event == "FLOOR1_UP":
             print("CLOSE_DOOR")
             print("MOVE_DOWN_FAST")
             state = "MOVING_FLOOR2_TO_FLOOR1"
@@ -75,12 +75,12 @@ while True:
 
 # Floor 3 to Floor 2
     elif state == "AT_FLOOR3":
-        if event == "CAR_FLOOR2":
+        if event == "CAR_FLOOR2" or event == "FLOOR2_UP" or event == "FLOOR2_DOWN":
             print("CLOSE_DOOR")
             print("MOVE_DOWN_FAST")
             state = "MOVING_FLOOR3_TO_FLOOR2"
 
-        elif event == "CAR_FLOOR1":
+        elif event == "CAR_FLOOR1" or event == "FLOOR1_UP":
             print("CLOSE_DOOR")
             print("MOVE_DOWN_FAST")
             state = "MOVING_FLOOR3_TO_FLOOR1"
