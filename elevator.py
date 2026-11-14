@@ -21,7 +21,7 @@ while True:
         if event == "BETWEEN_2_3":
             print("MOVE_UP_SLOW")
             state = "SLOWING_UP_TO_FLOOR3"
-            
+
 # Stop at Floor 3
     elif state == "SLOWING_UP_TO_FLOOR3":
         if event == "AT_FLOOR3":
@@ -29,3 +29,22 @@ while True:
             print("OPEN_DOOR")
             state = "AT_FLOOR3"
 
+# Moving toward Floor 2
+    elif state == "MOVING_UP_TO_FLOOR2":
+        if event == "BETWEEN_1_2":
+            print("MOVE_UP_SLOW")
+            state = "SLOWING_UP_TO_FLOOR2"
+
+# Arriving at Floor 3
+    elif state == "SLOWING_UP_TO_FLOOR3":
+        if event == "AT_FLOOR3":
+            print("STOP")
+            print("OPEN_DOOR")
+            state = "AT_FLOOR3"
+
+ # Arriving at Floor 2
+    elif state == "SLOWING_UP_TO_FLOOR2":
+        if event == "AT_FLOOR2":
+            print("STOP")
+            print("OPEN_DOOR")
+            state = "AT_FLOOR2"
