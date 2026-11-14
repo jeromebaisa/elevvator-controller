@@ -1,6 +1,6 @@
-# Elevator Controller
+# Elevator Controller Simulator
 
-# Elevator starts at floor 1
+# Elevator starts at Floor 1
 state = "AT_FLOOR1"
 
 while True:
@@ -15,6 +15,11 @@ while True:
             print("CLOSE_DOOR")
             print("MOVE_UP_FAST")
             state = "MOVING_UP_TO_FLOOR3"
+
+        elif event == "CAR_FLOOR2":
+            print("CLOSE_DOOR")
+            print("MOVE_UP_FAST")
+            state = "MOVING_UP_TO_FLOOR2"
 
 # Slow down when nearing Floor 3
     elif state == "MOVING_UP_TO_FLOOR3":
@@ -34,27 +39,27 @@ while True:
         if event == "BETWEEN_1_2":
             print("MOVE_UP_SLOW")
             state = "SLOWING_UP_TO_FLOOR2"
-
-# Arriving at Floor 3
-    elif state == "SLOWING_UP_TO_FLOOR3":
-        if event == "AT_FLOOR3":
-            print("STOP")
-            print("OPEN_DOOR")
-            state = "AT_FLOOR3"
-
- # Arriving at Floor 2
+            
+# Arriving at Floor 2
     elif state == "SLOWING_UP_TO_FLOOR2":
         if event == "AT_FLOOR2":
             print("STOP")
             print("OPEN_DOOR")
             state = "AT_FLOOR2"
+# Elevator stopped at Floor 2
+    elif state == "AT_FLOOR2":
 
 # Floor 2 to Floor 3
-    elif state == "AT_FLOOR2":
         if event == "CAR_FLOOR3":
             print("CLOSE_DOOR")
             print("MOVE_UP_FAST")
             state = "MOVING_FLOOR2_TO_FLOOR3"
+
+# Floor 2 to Floor 1
+        elif event == "CAR_FLOOR1":
+            print("CLOSE_DOOR")
+            print("MOVE_DOWN_FAST")
+            state = "MOVING_FLOOR2_TO_FLOOR1"
 
 # Slow down when approaching Floor 3
     elif state == "MOVING_FLOOR2_TO_FLOOR3":
@@ -88,3 +93,16 @@ while True:
             print("STOP")
             print("OPEN_DOOR")
             state = "AT_FLOOR2"
+
+# Moving from Floor 2 to Floor 1
+    elif state == "MOVING_FLOOR2_TO_FLOOR1":
+        if event == "BETWEEN_1_2":
+            print("MOVE_DOWN_SLOW")
+            state = "SLOWING_FLOOR2_TO_FLOOR1"
+
+# Arriving at Floor 1
+    elif state == "SLOWING_FLOOR2_TO_FLOOR1":
+        if event == "AT_FLOOR1":
+            print("STOP")
+            print("OPEN_DOOR")
+            state = "AT_FLOOR1"
