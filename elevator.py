@@ -21,6 +21,9 @@ while True:
             print("MOVE_UP_FAST")
             state = "MOVING_UP_TO_FLOOR2"
 
+        elif event == "FLOOR1_UP" or event == "CAR_FLOOR1":
+            print("OPEN_DOOR")
+
 # Slow down when nearing Floor 3
     elif state == "MOVING_UP_TO_FLOOR3":
         if event == "BETWEEN_2_3":
@@ -60,6 +63,9 @@ while True:
             print("MOVE_DOWN_FAST")
             state = "MOVING_FLOOR2_TO_FLOOR1"
 
+        elif event == "FLOOR2_UP" or event == "FLOOR2_DOWN" or event == "CAR_FLOOR2":
+            print("OPEN_DOOR")
+            
 # Slow down when approaching Floor 3
     elif state == "MOVING_FLOOR2_TO_FLOOR3":
         if event == "BETWEEN_2_3":
@@ -84,6 +90,9 @@ while True:
             print("CLOSE_DOOR")
             print("MOVE_DOWN_FAST")
             state = "MOVING_FLOOR3_TO_FLOOR1"
+
+        elif event == "FLOOR3_DOWN" or event == "CAR_FLOOR3":
+            print("OPEN_DOOR")
 
 # Slow down when approaching Floor 2
     elif state == "MOVING_FLOOR3_TO_FLOOR2":
