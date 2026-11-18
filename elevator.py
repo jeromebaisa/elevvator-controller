@@ -11,19 +11,31 @@ while True:
     except EOFError:
         break
 
+    # Check which floor the elevator is traveling toward
+    destination = 0
+
+    if state == "MOVING_UP_TO_FLOOR2" or state == "SLOWING_UP_TO_FLOOR2" or state == "MOVING_FLOOR3_TO_FLOOR2" or state == "SLOWING_FLOOR3_TO_FLOOR2":
+        destination = 2
+
+    elif state == "MOVING_UP_TO_FLOOR3" or state == "SLOWING_UP_TO_FLOOR3" or state == "MOVING_FLOOR2_TO_FLOOR3" or state == "SLOWING_FLOOR2_TO_FLOOR3":
+        destination = 3
+
+    elif state == "MOVING_FLOOR2_TO_FLOOR1" or state == "SLOWING_FLOOR2_TO_FLOOR1" or state == "MOVING_FLOOR3_TO_FLOOR1" or state == "SLOWING_FLOOR3_TO_FLOOR1":
+        destination = 1
+
     # Remember requests while elevator is moving
     if state != "AT_FLOOR1" and state != "AT_FLOOR2" and state != "AT_FLOOR3":
 
         if event == "CAR_FLOOR1" or event == "FLOOR1_UP":
-            if 1 not in pending_requests:
+            if 1 not in pending_requests and destination != 1:
                 pending_requests.append(1)
 
         elif event == "CAR_FLOOR2" or event == "FLOOR2_UP" or event == "FLOOR2_DOWN":
-            if 2 not in pending_requests:
+            if 2 not in pending_requests and destination != 2:
                 pending_requests.append(2)
 
         elif event == "CAR_FLOOR3" or event == "FLOOR3_DOWN":
-            if 3 not in pending_requests:
+            if 3 not in pending_requests and destination != 3:
                 pending_requests.append(3)
 
 # Floor 1 to Floor 3
