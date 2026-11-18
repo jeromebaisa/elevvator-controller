@@ -150,3 +150,40 @@ while True:
             print("OPEN_DOOR")
             state = "AT_FLOOR1"
 
+    # Process pending requests after arriving at a floor
+    while pending_requests and (state == "AT_FLOOR1" or state == "AT_FLOOR2" or state == "AT_FLOOR3"):
+
+        next_floor = pending_requests.pop(0)
+
+        if state == "AT_FLOOR1":
+            if next_floor == 2:
+                print("CLOSE_DOOR")
+                print("MOVE_UP_FAST")
+                state = "MOVING_UP_TO_FLOOR2"
+
+            elif next_floor == 3:
+                print("CLOSE_DOOR")
+                print("MOVE_UP_FAST")
+                state = "MOVING_UP_TO_FLOOR3"
+
+        elif state == "AT_FLOOR2":
+            if next_floor == 1:
+                print("CLOSE_DOOR")
+                print("MOVE_DOWN_FAST")
+                state = "MOVING_FLOOR2_TO_FLOOR1"
+
+            elif next_floor == 3:
+                print("CLOSE_DOOR")
+                print("MOVE_UP_FAST")
+                state = "MOVING_FLOOR2_TO_FLOOR3"
+
+        elif state == "AT_FLOOR3":
+            if next_floor == 1:
+                print("CLOSE_DOOR")
+                print("MOVE_DOWN_FAST")
+                state = "MOVING_FLOOR3_TO_FLOOR1"
+
+            elif next_floor == 2:
+                print("CLOSE_DOOR")
+                print("MOVE_DOWN_FAST")
+                state = "MOVING_FLOOR3_TO_FLOOR2"
