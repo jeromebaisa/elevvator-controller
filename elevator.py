@@ -3,6 +3,8 @@
 # Elevator starts at Floor 1
 state = "AT_FLOOR1"
 
+pending_requests = []
+
 while True:
     try:
         event = input().strip()
